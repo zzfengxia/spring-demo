@@ -68,4 +68,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <modules>
+        <module>eureka-server</module>
+        <module>service-provider</module>
+    </modules>
 </project>
