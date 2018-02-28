@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- 导入其他spring容器的bean -->
+       <import resource="applicationContext.xml" />
+       <!-- 使用spring 给接口注入实现类 -->
+       <!--<bean id="changeLetter" class="com.zz.springDemo.interfaces.UpperLetter">
+              <property name="str">
+                     <value>toUpper</value>
+              </property>
+       </bean>-->
+
+       <bean id="changeLetter" class="com.zz.springdemo.interfaces.LowerLetter" scope="singleton">
+              <property name="str" value="TOLOWER" />
+       </bean>
+
+</beans>

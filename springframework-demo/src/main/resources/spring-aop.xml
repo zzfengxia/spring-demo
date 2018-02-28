@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- 配置被代理的对象 -->
+       <bean id="test1Service" class="com.zz.springdemo.aop.caseone.TestServiceImpl1">
+              <property name="name" value="zzxia" />
+       </bean>
+
+       <!-- 配置前置通知 -->
+       <bean id="myMethodBeforeAdvice" class="com.zz.springdemo.aop.caseone.MyMethodBeforeAdvice" />
+
+       <!-- 配置后置通知 -->
+       <bean id="myAfterReturningAdvice" class="com.zz.springdemo.aop.caseone.MyAfterReturningAdvice" />
+
+       <!-- 配置环绕通知 -->
+       <bean id="myMethodInterceptor" class="com.zz.springdemo.aop.caseone.MyMethodInterceptor" />
+
+       <!-- 配置异常通知 -->
+       <bean id="myThrowAdvice" class="com.zz.springdemo.aop.caseone.MyThrowAdvice" />
+
+       <!-- 配置的通知的切入点(即设置目标对象的哪些方法织入通知,只有sayHi方法会调用前置通知) -->
+       <bean id="myMethodBeforeAdviceFilter" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+              <property name="advice" ref="myMethodBeforeAdvice" />
+              <property name="mappedNames">
+                     <list>
+                            <!-- 可以使用正则表达式匹配方法名 -->
+                            <value>sayHi</value>
+                     </list>
+              </property>
+       </bean>
+
+       <!-- 配置代理对象 -->
+       <bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+              <!-- 代理接口集 -->
+              <property name="proxyInterfaces">
+                     <list>
+                            <value>com.zz.springdemo.aop.caseone.TestService</value>
+                            <value>com.zz.springdemo.aop.caseone.TestService2</value>
+                     </list>
+              </property>
+              <!-- 把通知织入到代理对象 -->
+              <property name="interceptorNames">
+                     <list>
+                            <!-- 相当于将MyMethodBeforeAdvice前置通知和代理对象相关联，也可以把通知看成拦截器 -->
+                            <!--<value>myMethodBeforeAdvice</value>-->
+                            <!-- 织入设置了具体方法的前置通知 -->
+                            <value>myMethodBeforeAdviceFilter</value>
+                            <!-- 织入后置通知 -->
+                            <value>myAfterReturningAdvice</value>
+                            <!-- 织入环绕通知 -->
+                            <value>myMethodInterceptor</value>
+                            <!-- 织入异常通知 -->
+                            <value>myThrowAdvice</value>
+                     </list>
+
+              </property>
+              <!-- 配置被代理对象，可以指定 -->
+              <property name="target" ref="test1Service">
+              </property>
+       </bean>
+
+</beans>

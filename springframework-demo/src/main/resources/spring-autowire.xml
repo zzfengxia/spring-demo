@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- 配置Dog对象 -->
+       <bean id="dog" class="com.zz.springdemo.assemble.autoawire.Dog">
+              <property name="age" value="3" />
+              <property name="name" value="大黄" />
+       </bean>
+       <!-- 配置Master对象  自动装配 autowire="default"为beans中指定的方式；在beans中自指定default-autowire=""默认值为no-->
+       <bean name="master" class="com.zz.springdemo.assemble.autoawire.Master" autowire="constructor">
+              <property name="name" value="杨园" />
+       </bean>
+</beans>

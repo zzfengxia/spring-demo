@@ -11,5 +11,6 @@
 
     <modules>
         <module>springcloud-demo</module>
+        <module>springframework-demo</module>
     </modules>
 </project>

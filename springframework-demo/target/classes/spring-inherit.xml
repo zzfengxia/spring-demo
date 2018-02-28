@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="person" class="com.zz.springdemo.assemble.inherit.Person">
+              <property name="age" value="22" />
+              <property name="name" value="小李" />
+       </bean>
+
+       <!-- 使用继承装配Bean, age和name属性的值来源于父对象 person -->
+       <bean id="student" parent="person" class="com.zz.springdemo.assemble.inherit.Student">
+              <property name="degree" value="学士" />
+              <!-- 再配置父类继承的的属性时会覆盖父对象的值 -->
+              <property name="name" value="小飞" />
+       </bean>
+</beans>

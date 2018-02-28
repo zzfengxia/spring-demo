@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- 默认范围为scope="singleton" -->
+       <bean name="cat" class="com.zz.springdemo.Cat" scope="prototype">
+              <property name="name">
+                     <value>小花</value>
+              </property>
+              <property name="behavior" ref="perform" />
+       </bean>
+
+       <bean name="perform" class="com.zz.springdemo.Behavior" scope="prototype"/>
+
+       <!-- 熟悉bean的生命周期 8.自定义初始化方法；13.自定义销毁方法-->
+       <bean id = "lifeBean" init-method="init" destroy-method="myDestory" class="com.zz.springdemo.beanLife.LifeBean">
+              <!-- 生命周期：2.设置属性 -->
+              <property name="name" value="MyLife" />
+       </bean>
+
+       <!-- 配置BeanPostProcessor,类似web项目的filter配置,在applicationContext里的bean被实例化时会调用改对象的两个方法 -->
+       <bean id="beanPostProcessor" class="com.zz.springdemo.beanLife.MyBeanPostProcess" />
+</beans>

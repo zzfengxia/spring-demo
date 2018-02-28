@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+       <!-- 传统配置（配置dataSource） -->
+       <bean id="dbutil" class="com.zz.springdemo.dispatch.DBUtil">
+              <property name="name" value="sa" />
+              <property name="url" value="jdbc:sqlserver://172.168.1.21:1433;DatabaseName=kduas" />
+              <property name="pwd" value="sa" />
+              <property name="driverName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+       </bean>
+
+       <!-- 读取ds.properties文件,多个文件用逗号隔开 -->
+       <!--<context:property-placeholder location = "classpath:com/zz/springDemo/dispatch/ds.properties,
+                                                 com/zz/springDemo/dispatch/ds2.properties" />-->
+
+       <!-- 另一种获取配置文件信息的方法 使用该类在java中获取配置文件的信息-->
+       <bean id="getProperty" class="com.zz.springdemo.dispatch.MyPropertyPlaceholderConfigurer">
+              <property name="locations">
+                     <list>
+                            <value>ds.properties</value>
+                            <value>ds2.properties</value>
+                     </list>
+              </property>
+       </bean>
+
+       <!-- 分散配置 -->
+       <bean id="dbutil2" class="com.zz.springdemo.dispatch.DBUtil">
+              <property name="name" value="${ecif.username}" />
+              <property name="url" value="${ecif.jdbcUrl}" />
+              <property name="pwd" value="${ecif.password}" />
+              <property name="driverName" value="${jdbc.driverClass}" />
+       </bean>
+
+       <!-- 分散配置 -->
+       <bean id="dbutil3" class="com.zz.springdemo.dispatch.DBUtil">
+              <property name="name" value="${name}" />
+              <property name="url" value="${url}" />
+              <property name="pwd" value="${pwd}" />
+              <property name="driverName" value="${driver}" />
+       </bean>
+</beans>
