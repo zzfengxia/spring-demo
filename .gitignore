@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+.classpath
 
 # Log file
 *.log
@@ -27,7 +28,36 @@ hs_err_pid*
 *.iml
 *.ipr
 
-# build file
+*#
+*.sw?
+*~
+.#*
+.*.md.html
+.DS_Store
+.factorypath
+.gradle
+.idea
+.metadata
+.project
+.recommenders
+.settings
+.springBeans
+/build
+/code
+MANIFEST.MF
+_site/
+activemq-data
+bin
+build
+dependency-reduced-pom.xml
+dump.rdb
+interpolated*.xml
+lib/
+manifest.yml
+overridedb.*
 settings.xml
 target
-/build
+transaction-logs
+.flattened-pom.xml
+.gradletasknamecache
+.sts4-cache
