@@ -20,6 +20,6 @@ public class SequenceTest {
 
     @Test
     public void testSequence() {
-        System.out.println(sequenceService.getNextVal());
+        //System.out.println(sequenceService.getNextVal());
     }
 }

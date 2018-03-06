@@ -1,28 +1,33 @@
 package com.zz.eureka.controller;
 
+import com.zz.eureka.domain.User;
 import com.zz.eureka.service.SequenceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.Writer;
 
 /**
  * Created by Francis.zz on 2018/3/1.
  */
-@Controller
+@RestController
 public class SequenceController {
     @Autowired
     private SequenceService sequenceService;
 
-    @GetMapping("test")
-    public void test(HttpServletResponse response) throws IOException {
+    @GetMapping("getUser/{id}")
+    public User test(@PathVariable("id") Integer id) throws IOException {
+        User u = new User();
+        u.setId(id);
+        u.setName("Tom");
+        return u;
+        /*System.out.println("heelo");
         String val = sequenceService.getNextVal();
         Writer writer = response.getWriter();
         writer.write(val);
         writer.flush();
-        writer.close();
+        writer.close();*/
     }
 }
