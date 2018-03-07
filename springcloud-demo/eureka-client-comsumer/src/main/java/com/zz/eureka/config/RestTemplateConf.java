@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 /**
  * 配置RestTemplate,可作为Rest客户端使用
  */
-@Component
 @Configuration
 public class RestTemplateConf {
     @Bean
