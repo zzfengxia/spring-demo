@@ -6,12 +6,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * Created by Francis.zz on 2018/2/27.
- * 开启Eureka服务提供者，像Eureka服务注册中心注册服务
+ * 开启Eureka服务消费者，向Eureka服务注册中心注册服务
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class ServiceProviderApplication {
+public class ServiceComsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceProviderApplication.class, args);
+        SpringApplication.run(ServiceComsumerApplication.class, args);
     }
 }
