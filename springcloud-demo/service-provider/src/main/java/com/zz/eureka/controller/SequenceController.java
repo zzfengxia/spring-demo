@@ -19,9 +19,9 @@ public class SequenceController {
 
     @GetMapping("test")
     public void test(HttpServletResponse response) throws IOException {
-        String val = sequenceService.getNextVal();
+        int val = sequenceService.genNextVal();
         Writer writer = response.getWriter();
-        writer.write(val);
+        writer.write(val + "");
         writer.flush();
         writer.close();
     }

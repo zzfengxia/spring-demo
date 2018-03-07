@@ -12,6 +12,7 @@ import java.util.Map;
  */
 @Service
 public class SequenceService {
+    private int i = 0;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -22,5 +23,9 @@ public class SequenceService {
         DecimalFormat df = new DecimalFormat("000000000000000");
 
         return "1" + df.format(nextVal);
+    }
+
+    public int genNextVal() {
+        return i++;
     }
 }

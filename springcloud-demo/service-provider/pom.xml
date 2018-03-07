@@ -38,6 +38,13 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- springre热部署工具包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 无法继承，即子模块需要另行导入 -->
+        </dependency>
+
         <!-- mysql驱动jar包 -->
         <dependency>
             <groupId>mysql</groupId>
