@@ -1,0 +1,40 @@
+
+# RandomValuePropertySource springboot自动生成随机数
+my:
+  secret: ${random.value}
+  number: ${random.int}
+  bignumber: ${random.long}
+  number.less.than.ten: ${random.int(10)}
+  number.in.range: ${random.int[1024,65536]}
+  argList:    # 使用${my.argList[0]}的形式获取
+    - Tom
+    - Jerry
+    - Lucy
+    - Mercy
+
+  # 松散绑定(标准驼峰,虚线表示,大写形式等都能正确绑定到java驼峰命名的变量上),只适用于@ConfigurationProperties beans
+  #firstName: Tom
+  #first-name: Jerry
+  FIRST_NAME: Lucy
+
+server:
+  port: 9081
+---
+# multi profiles 配置;使用"---"包装
+spring:
+  profiles: dev
+conf:
+  name: devlopment
+---
+spring:
+  profiles: prod
+conf:
+  name: production
+---
+
+# 默认激活profile配置
+spring:
+  profiles:
+    active: prod
+
+

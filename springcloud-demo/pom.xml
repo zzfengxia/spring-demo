@@ -14,7 +14,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.10.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <!--<relativePath/>--> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
@@ -64,6 +64,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 使用import scope解决maven单继承的问题(只能集成一个parent)，类似java的组合；只能在dependencyManagement中使用 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
