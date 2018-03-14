@@ -1,3 +1,15 @@
+# db配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/vfc_sptsm?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password:
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
 
 # RandomValuePropertySource springboot自动生成随机数
 my:
@@ -19,6 +31,7 @@ my:
 
 server:
   port: 9081
+
 ---
 # multi profiles 配置;使用"---"包装
 spring:
@@ -35,6 +48,6 @@ conf:
 # 默认激活profile配置
 spring:
   profiles:
-    active: prod
+    active: dev
 
 

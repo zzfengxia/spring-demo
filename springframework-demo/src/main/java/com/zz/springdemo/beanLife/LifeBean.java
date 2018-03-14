@@ -4,12 +4,14 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 
 /**
  * Created by Francis.zz on 2016/2/24.
  * 描述：熟悉Bean的声明周期
  */
-public class LifeBean implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
+public class LifeBean implements BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean, ApplicationListener {
 
     public LifeBean() {
         System.out.println("1:constructor is invoked, Bean 被实例化!");
@@ -27,7 +29,7 @@ public class LifeBean implements BeanNameAware, BeanFactoryAware, ApplicationCon
     }
 
     public void sayHello() {
-        System.out.println("10:sayHello is invoked, hello " + this.name);
+        System.out.println("sayHello is invoked, hello " + this.name);
     }
 
     // bean生命周期：3.实现BeanNameAware接口,注入bean的ID名
@@ -68,5 +70,11 @@ public class LifeBean implements BeanNameAware, BeanFactoryAware, ApplicationCon
     // bean生命周期：13.定制destroy方法
     public void myDestory() {
         System.out.println("13:myDestory is invoking... ");
+    }
+
+    // bean生命周期：在bean实例化后调用
+    @Override
+    public void onApplicationEvent(ApplicationEvent applicationEvent) {
+        System.out.println("10: onApplicationEvent is invoking..." + applicationEvent.getSource().toString());
     }
 }
