@@ -17,6 +17,11 @@ mybatis:
   type-aliases-package: com.zz.springboot.domain.mybatis
   # 扫描mapper.xml文件，也可以在mapper注解类中直接使用注解的方式
   mapper-locations: classpath*:mapper/**/*.xml
+  # 配置文件
+  configuration:
+    # 驼峰命名转换
+    map-underscore-to-camel-case: true
+
 
 # RandomValuePropertySource springboot自动生成随机数
 my:
