@@ -4,10 +4,7 @@ import com.zz.springboot.domain.User;
 import com.zz.springboot.listener.UserRegisterEvent;
 import com.zz.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
     public User findOne(Long id) {
         return userRepository.findOne(id);
