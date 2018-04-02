@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -18,10 +19,11 @@ public class SequenceController {
     private SequenceService sequenceService;
 
     @GetMapping("getUser/{id}")
-    public User test(@PathVariable("id") Integer id) throws IOException {
+    public User test(@PathVariable("id") Integer id, HttpServletRequest request) throws IOException {
         User u = new User();
         u.setId(id);
         u.setName("Tom");
+        u.setUrl(request.getRequestURI());
         return u;
         /*System.out.println("heelo");
         String val = sequenceService.getNextVal();
