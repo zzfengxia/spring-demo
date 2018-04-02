@@ -11,6 +11,18 @@ spring:
     hibernate:
       ddl-auto: none
 
+# mybatis配置
+mybatis:
+  # 配置映射实体的包别名，这样在mapper.xml文件中结果返回就不需要配置完整包名
+  type-aliases-package: com.zz.springboot.domain.mybatis
+  # 扫描mapper.xml文件，也可以在mapper注解类中直接使用注解的方式
+  mapper-locations: classpath*:mapper/**/*.xml
+  # 配置文件
+  configuration:
+    # 驼峰命名转换
+    map-underscore-to-camel-case: true
+
+
 # RandomValuePropertySource springboot自动生成随机数
 my:
   secret: ${random.value}

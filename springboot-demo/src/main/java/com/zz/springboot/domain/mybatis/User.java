@@ -1,18 +1,18 @@
-package com.zz.springboot.domain;
+package com.zz.springboot.domain.mybatis;
 
-import com.zz.springboot.annotation.Cacheable;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "tm_user")
+/**
+ * --------------------------------
+ * create by Intellij IDEA.
+ * @author Francis.zz
+ * @date 2018-03-14 17:57
+ * --------------------------------
+ */
 @Data
-@Cacheable
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String realname;
