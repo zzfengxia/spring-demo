@@ -23,7 +23,7 @@ public class SequenceController {
         User u = new User();
         u.setId(id);
         u.setName("Tom");
-        u.setUrl(request.getRequestURI());
+        u.setUrl(request.getRequestURL().toString());
         return u;
         /*System.out.println("heelo");
         String val = sequenceService.getNextVal();

@@ -26,7 +26,7 @@ public class ClientController {
     @RequestMapping("client")
     public String fetchServer() {
         // 负载客户端
-        String res = balanceTemplate.getForObject("http://sserver-provider/getUser/2", String.class);
+        String res = balanceTemplate.getForObject("http://server-provider/getUser/2", String.class);
         System.out.println("balance rest:" + res);
         // 无负载功能的客户端
         String res2 = restTemplate.getForObject("http://localhost:8081/getUser/2", String.class);
