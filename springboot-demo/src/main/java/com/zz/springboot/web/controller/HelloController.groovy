@@ -2,8 +2,9 @@ package com.zz.springboot.web.controller
 
 import com.zz.springboot.service.HelloService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
 
 /**
  * groovy类，混合语言编程Demo
@@ -13,14 +14,16 @@ import org.springframework.web.bind.annotation.RestController
  * @date 2018-03-15 11:17
  * --------------------------------
  */
-@RestController
-@RequestMapping("groovy")
-public class HelloController {
+@Controller
+@RequestMapping
+class HelloController {
     @Autowired
     private HelloService helloService
 
     @RequestMapping("hello")
-    public String hello() {
-        return helloService.getCache("test")
+    String hello(Model model) {
+        model.addAttribute("userName", "Francis")
+
+        return "index"
     }
 }
