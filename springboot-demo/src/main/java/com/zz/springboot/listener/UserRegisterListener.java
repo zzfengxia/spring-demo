@@ -1,6 +1,6 @@
 package com.zz.springboot.listener;
 
-import com.zz.springboot.domain.User;
+import com.zz.springboot.domain.hq.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;

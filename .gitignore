@@ -27,6 +27,9 @@ hs_err_pid*
 *.iws
 *.iml
 *.ipr
+out
+target
+build
 
 *#
 *.sw?
@@ -47,7 +50,6 @@ MANIFEST.MF
 _site/
 activemq-data
 bin
-build
 dependency-reduced-pom.xml
 dump.rdb
 interpolated*.xml
@@ -55,7 +57,6 @@ lib/
 manifest.yml
 overridedb.*
 settings.xml
-target
 transaction-logs
 .flattened-pom.xml
 .gradletasknamecache

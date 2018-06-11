@@ -1,19 +1,19 @@
-package com.zz.springboot.domain;
+package com.zz.springboot.domain.hq;
 
 import com.zz.springboot.annotation.Cacheable;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
 @Table(name = "tm_user")
-@Data
+@Setter
+@Getter
 @Cacheable
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseEntity {
     private String username;
     private String realname;
     private String password;
@@ -21,8 +21,6 @@ public class User {
     private String email;
     private String jobuuid;
     private Long departmentId;
-    private Date createTime;
-    private Date updateTime;
     private Date lastTime;
     private String status;
     private String phone;

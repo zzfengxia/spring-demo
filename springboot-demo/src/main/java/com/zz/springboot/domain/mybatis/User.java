@@ -1,6 +1,8 @@
 package com.zz.springboot.domain.mybatis;
 
-import lombok.Data;
+import com.zz.springboot.domain.hq.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -11,9 +13,9 @@ import java.util.Date;
  * @date 2018-03-14 17:57
  * --------------------------------
  */
-@Data
-public class User {
-    private Long id;
+@Setter
+@Getter
+public class User extends BaseEntity {
     private String username;
     private String realname;
     private String password;
@@ -21,8 +23,6 @@ public class User {
     private String email;
     private String jobuuid;
     private Long departmentId;
-    private Date createTime;
-    private Date updateTime;
     private Date lastTime;
     private String status;
     private String phone;

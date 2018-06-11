@@ -1,5 +1,6 @@
 package com.zz.springboot.config;
 
+import com.zz.springboot.annotation.IgnoreScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -12,6 +13,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  */
 @Configuration
 @Profile("dev")
+@IgnoreScan
 public class DevRedisConfig {
     @Bean
     public StringRedisTemplate getRedisTemplate() {

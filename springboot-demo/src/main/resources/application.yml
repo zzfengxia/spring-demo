@@ -10,6 +10,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+    # database: mysql
+
+  # redis配置
+  redis:
+    password: root
 
 # mybatis配置
 mybatis:
@@ -22,6 +27,12 @@ mybatis:
     # 驼峰命名转换
     map-underscore-to-camel-case: true
 
+
+
+# 开启mybatis的日志输出，logging.level + mapper包名
+logging:
+  level:
+    com.zz.springboot.mapper: debug
 
 # RandomValuePropertySource springboot自动生成随机数
 my:

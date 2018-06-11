@@ -23,7 +23,7 @@ class HelloController {
     @RequestMapping("hello")
     String hello(Model model) {
         model.addAttribute("userName", "Francis")
-
+        // 使用freemarker模板引擎，转到index.ftl页面
         return "index"
     }
 }

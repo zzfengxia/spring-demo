@@ -1,11 +1,14 @@
 package com.zz.springboot.web.controller.mybatis;
 
+import com.google.common.collect.ImmutableMap;
 import com.zz.springboot.domain.mybatis.User;
 import com.zz.springboot.service.mybatis.MUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * --------------------------------
@@ -23,6 +26,16 @@ public class MUserController {
 
     @RequestMapping("findOne/{id}")
     public User findOne(@PathVariable("id") Long id) {
-        return userService.fingOne(id);
+        User user = userService.fingOne(id);
+
+        if (user != null) {
+            Map hot = ImmutableMap.of(
+                    "userName", user.getUsername(),
+                    "email", user.getEmail()
+            );
+            userService.cacheHotData(hot);
+        }
+
+        return user;
     }
 }

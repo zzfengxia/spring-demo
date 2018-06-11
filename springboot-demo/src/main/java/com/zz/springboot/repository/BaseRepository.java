@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 
@@ -15,8 +16,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Francis.zz on 2018/3/13.
+ *
  * 自定义所有jpa仓库的实现基类，在springboot入口使用repositoryBaseClass引入
  * 可以在基类中使用自定义的curd实现，比如引入缓存等
+ * springboot2 已无需在此处定义缓存策略，可直接使用{@link org.springframework.cache.annotation.Cacheable}缓存热点数据
  */
 public class BaseRepository<T> extends SimpleJpaRepository<T, Long> {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -27,7 +30,7 @@ public class BaseRepository<T> extends SimpleJpaRepository<T, Long> {
     private long cacheTime;
 
     // cache
-    private static StringRedisTemplate redisTemplate;
+    private static RedisTemplate<String, String> redisTemplate;
 
     public BaseRepository(JpaEntityInformation<T, Long> entityInformation, EntityManager entityManager) {
         super(entityInformation, entityManager);
@@ -42,9 +45,9 @@ public class BaseRepository<T> extends SimpleJpaRepository<T, Long> {
     }
 
     @Override
-    public T findOne(Long aLong) {
+    public T getOne(Long aLong) {
         if(!cacheable) {
-            return super.findOne(aLong);
+            return super.getOne(aLong);
         }
         logger.debug("-- 查询{}, ID：{}", clz.getSimpleName(), aLong);
 
@@ -53,7 +56,7 @@ public class BaseRepository<T> extends SimpleJpaRepository<T, Long> {
             return JSON.parseObject(value, clz);
         }
 
-        T res = super.findOne(aLong);
+        T res = super.getOne(aLong);
         saveCache(aLong, res);
 
         return res;
@@ -63,7 +66,7 @@ public class BaseRepository<T> extends SimpleJpaRepository<T, Long> {
         redisTemplate.opsForValue().set(redisKey(id), JSON.toJSONString(value), cacheTime, TimeUnit.MILLISECONDS);
     }
 
-    public static void setRedisTemplate(StringRedisTemplate redisTemplate) {
+    public static void setRedisTemplate(RedisTemplate<String, String> redisTemplate) {
         BaseRepository.redisTemplate = redisTemplate;
     }
 

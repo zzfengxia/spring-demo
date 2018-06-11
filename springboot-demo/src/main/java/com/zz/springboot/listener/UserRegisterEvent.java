@@ -1,6 +1,6 @@
 package com.zz.springboot.listener;
 
-import com.zz.springboot.domain.User;
+import com.zz.springboot.domain.hq.User;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
