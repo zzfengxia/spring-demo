@@ -4,8 +4,18 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost/vfc_sptsm?useUnicode=true&characterEncoding=utf-8
     username: root
-    password:
-
+    # 生成的加密后的密码(原密码 123456)
+    password: HTwYv4VibHXfh1QpJljZhVffxZz0OhQViz/2jv0qjHVz3eKJIF7P38nNwKO24zuQbHPT5HI4jBRitgpBncK8sA==
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1
+      # 启用数据库密码加密
+      connection-properties: config.decrypt=true;config.decrypt.key=${druid-public-key}
+      filter:
+        config:
+          enabled: true
+  # jpa相关配置
   jpa:
     show-sql: true
     hibernate:
@@ -15,6 +25,9 @@ spring:
   # redis配置
   redis:
     password: root
+
+# 数据库密码生成的公钥
+druid-public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAI9rpN+pvgXRhxzZmd4bzzQMTstgNf6HvINo2ZEK2vgkGBW/TZJIHNQIK3RmF4kYnGk+LJxhcbPTumN8hnaB3UECAwEAAQ==
 
 # mybatis配置
 mybatis:
