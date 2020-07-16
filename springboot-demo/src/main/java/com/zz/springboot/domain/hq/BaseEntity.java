@@ -17,8 +17,6 @@ import java.util.Date;
  * @desc jpa hibernate, 使用{@link MappedSuperclass}注解将字段注入到子类
  * ************************************
  */
-@Setter
-@Getter
 @MappedSuperclass
 // 解决错误`No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer`
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -50,5 +48,31 @@ public class BaseEntity implements LongID {
     @PreUpdate
     public void preUpdate() {
         mTime = new Date();
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getcTime() {
+        return cTime;
+    }
+
+    public void setcTime(Date cTime) {
+        this.cTime = cTime;
+    }
+
+    public Date getmTime() {
+        return mTime;
+    }
+
+    public void setmTime(Date mTime) {
+        this.mTime = mTime;
     }
 }

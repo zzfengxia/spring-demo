@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<#assign base="${request.contextPath}"/>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo-<sitemesh:write property='title'/></title>
+
+    <sitemesh:write property='head'/>
+</head>
+<body class="hold-transition sidebar-mini">
+<div id="indexApp" class="wrapper">
+    <div>这是Body</div>
+    <sitemesh:write property='body'/>
+</div>
+</body>
+</html>

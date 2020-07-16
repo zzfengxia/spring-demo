@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public void register(User user) {
-        user.setCTime(new Date());
+        user.setcTime(new Date());
         // 自定义事件发布
         applicationContext.publishEvent(new UserRegisterEvent(this, user));
     }

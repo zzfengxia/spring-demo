@@ -33,8 +33,7 @@
         <appender-ref ref="FILE"/>
     </logger>-->
 
-    <root level="INFO">
-        <appender-ref ref="FILE"/>
+    <root level="debug">
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>

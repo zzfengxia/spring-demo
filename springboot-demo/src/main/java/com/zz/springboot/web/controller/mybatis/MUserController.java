@@ -29,6 +29,7 @@ public class MUserController {
         User user = userService.fingOne(id);
 
         if (user != null) {
+            System.out.println(user.getcTime());
             Map hot = ImmutableMap.of(
                     "userName", user.getUsername(),
                     "email", user.getEmail()

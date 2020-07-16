@@ -32,4 +32,4 @@ eureka:
 ---
 spring:
   profiles:
-    active: sever1
+    active: sever2

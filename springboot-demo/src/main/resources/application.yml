@@ -26,8 +26,15 @@ spring:
   redis:
     password: root
 
+  # freemarker配置,默认utf-8
+  freemarker:
+    suffix: .html
+    # views上下文别名
+    request-context-attribute: request
+
 # 数据库密码生成的公钥
 druid-public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAI9rpN+pvgXRhxzZmd4bzzQMTstgNf6HvINo2ZEK2vgkGBW/TZJIHNQIK3RmF4kYnGk+LJxhcbPTumN8hnaB3UECAwEAAQ==
+
 
 # mybatis配置
 mybatis:
@@ -67,7 +74,8 @@ my:
 
 server:
   port: 9081
-
+  servlet:
+    context-path: /demo
 ---
 # multi profiles 配置;使用"---"包装
 spring:
